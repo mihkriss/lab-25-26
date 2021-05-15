@@ -1,16 +1,13 @@
-CC ?= gcc
-CFLAGS ?= -Werror -pedantic
-main: main.o list.o sort.o
-	$(CC) -o main main.o list.o sort.o
+#!/bin/make
+CC = gcc
+CCFLAGS = -g -Wall -std=c99
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
+SRC = list.c main.c sort.c 
+PROG = main
 
-list.o: list.c list.h
-	$(CC) $(CFLAGS) -c list.c
-
-sort.o: sort.c sort.h
-	$(CC) $(CFLAGS) -c sort.c
+build:
+$(CC) $(CFLAGS) $(SRC) -o $(PROG)
 
 clean:
-	rm -rf *.o main
+rm $(PROG)
+
